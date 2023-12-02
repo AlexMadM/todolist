@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 
 type AddItemFormPropsType = {
-    addItem: (title: string, todolistId: string) => void
-    id: string
+    addItem: (title: string) => void
+
 }
 
 export function AddItemForm(props: AddItemFormPropsType) {
@@ -14,13 +14,13 @@ export function AddItemForm(props: AddItemFormPropsType) {
     const oneKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null)
         if (e.charCode === 13) {
-            props.addItem(newTaskTitle, props.id);
+
             setNewTaskTitle('')
         }
     }
     const addTask = () => {
         if (newTaskTitle.trim() !== '') {
-            props.addItem(newTaskTitle.trim(), props.id);
+            props.addItem(newTaskTitle.trim());
             setNewTaskTitle('')
         } else {
             setError('Title is required')
